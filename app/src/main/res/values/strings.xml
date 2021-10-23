@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HARApp</string>
+    <string name="prediction_button">prediction</string>
+    <string name="classification_error_message">ERROR</string>
+</resources>
