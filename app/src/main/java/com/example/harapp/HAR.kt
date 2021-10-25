@@ -15,6 +15,10 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.jvm.Throws
 
+/**
+ * https://developer.android.com/codelabs/digit-classifier-tflite
+ * 参考にtfliteによる推論の実装
+ */
 class HAR(private val context: Context) {
     private var interpreter: Interpreter? = null
 
@@ -49,7 +53,6 @@ class HAR(private val context: Context) {
         val interpreter = Interpreter(model)
         //
         val inputShape = interpreter.getInputTensor(0).shape()
-        Log.d("aAAa","${inputShape[1]} x ${inputShape[2]}")
         inputSignalWidth = inputShape[1]
         inputSignalHeight = inputShape[2]
         modelInputSize = FLOAT_TYPE_SIZE*inputSignalWidth*inputSignalHeight*SIGNAL_CHANNEL_SIZE
@@ -57,7 +60,7 @@ class HAR(private val context: Context) {
         this.interpreter = interpreter
 
         isInitialized = true
-        Log.d(TAG, "Initialized TFLite interpreter.")
+        Log.i(TAG, "Initialized TFLite interpreter.")
     }
 
     @Throws(IOException::class)
@@ -78,7 +81,7 @@ class HAR(private val context: Context) {
         interpreter?.run(byteBuffer, output)
 
         val result = output[0]
-        Log.d("aAAa",result[0].toString())
+        Log.d(TAG,result[0].toString())
         val maxIndex = result.indices.maxByOrNull { result[it] } ?: -1
 
         val activity = when(maxIndex){
