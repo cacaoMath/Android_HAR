@@ -10,7 +10,7 @@
         android:id="@+id/predictionResultTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/standby"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -18,13 +18,23 @@
         app:layout_constraintVertical_bias="0.314" />
 
     <Button
-        android:id="@+id/predictionButton"
+        android:id="@+id/sensingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/prediction_button"
+        android:text="@string/start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/predictionResultTv"
+        app:layout_constraintVertical_bias="0.222" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/predictionResultTv" />
-
+        app:layout_constraintTop_toBottomOf="@+id/sensingButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
